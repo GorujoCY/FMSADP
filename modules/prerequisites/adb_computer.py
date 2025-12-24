@@ -25,7 +25,8 @@ class AdbCheckComputer:
                 else:
                     return "Fedora Linux"
             else:
-                raise Warning("Unable to detect or missing linux distributions, currently the ones supported are: Fedora, Ubuntu/Debian and Arch. Assuming Generic distro. \nSpecify the package manager of your distro for the time being below \n\n")
+                raise Warning("Unable to detect or missing linux distributions, currently the ones supported are: Fedora, Ubuntu/Debian and Arch. Assuming Generic distro.")
+                return "Linux"
         else:
             raise Warning("Unable to detect your OS (it is likely you're using BSD, Android or MacOS), but you may be able to continue assuming you already have ADB, the prerequisite process is currently for Linux and Windows")
 
@@ -114,15 +115,12 @@ if __name__ == "__main__":
     input()
 
     c_os = AdbCheckcomputer.check_computer()
-    if isinstance(os, list):
-        print(c_os[0])
-    else:
         print(c_os)
 
     print("Press enter to initiate adb check test")
     input()
 
-    if isinstance(os, list):
+    if isinstance(c_os, list):
         AdbCheckcomputer.check_adb(c_os[0])
     else:
         AdbCheckcomputer.check_adb(c_os)
