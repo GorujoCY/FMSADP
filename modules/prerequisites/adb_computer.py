@@ -2,7 +2,7 @@ import platform
 import os
 import sys
 
-class Adbcomputer:
+class AdbCheckComputer:
 
     def check_computer():
         c_os = platform.system()
@@ -43,7 +43,7 @@ class Adbcomputer:
                 print("3. use built-in ADB module [NOT RECOMMENDED]")
                 choices1 = input(int("1/2/3>"))
                 if choices2 == 3:
-                    return True
+                    return "built-in"
                 if choices2 == 2:
                     adbdir = input("Drag and Drop or Specify the directory ADB is located: ")
                     return [True, adbdir]
@@ -73,7 +73,7 @@ class Adbcomputer:
                         print("3. use built-in ADB module [NOT RECOMMENDED]")
                         choices1 = input(int("1/2/3>"))
                         if choices2 == 3:
-                            return True
+                            return "built-in"
                         if choices2 == 2:
                             input("Drag and Drop or Specify the directory ADB is located: ")
                             return [True, adbdir]
@@ -98,7 +98,7 @@ class Adbcomputer:
                 print("3. use built-in ADB module [NOT RECOMMENDED (And nor is/will it tested)]")
                 choices2 = input(int("1/2/3>"))
                 if choices2 == 3:
-                    return True
+                    return "built-in"
                 if choices2 == 2:
                     abdpath = input("Drag and Drop or Specify the directory ADB is located: ")
                     return [True, adbdir]
@@ -113,7 +113,7 @@ if __name__ == "__main__":
     print("Press enter to initiate test")
     input()
 
-    c_os = Adbcomputer.check_computer()
+    c_os = AdbCheckcomputer.check_computer()
     if isinstance(os, list):
         print(c_os[0])
     else:
@@ -123,6 +123,6 @@ if __name__ == "__main__":
     input()
 
     if isinstance(os, list):
-        Adbcomputer.check_adb(c_os[0])
+        AdbCheckcomputer.check_adb(c_os[0])
     else:
-        Adbcomputer.check_adb(c_os)
+        AdbCheckcomputer.check_adb(c_os)
