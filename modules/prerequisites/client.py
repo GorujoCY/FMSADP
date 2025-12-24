@@ -37,22 +37,19 @@ class AdbCheckClient:
                         continue
 
 
-    def check_phone_manufacturer(adb_is_true, is_device_trusted, s_os, adbc):
+    def check_phone_manufacturer(adb_is_true, s_os, adbc):
         if isinstance(adb_is_true, list):
             if adb_is_true[0]:
-                if is_device_trusted:
-                    os.chdir(adb_is_true[1])
-                    if s_os == "Windows":
-                        c_manufacturer = subprocess.run(['adb', 'shell', 'getprop', 'ro.product.manufacturer'], capture_output=True)
-                    elif s_os.endwith("Linux") or s_os == "Linux":
-                        c_manufacturer = subprocess.run('./adb', 'shell', 'getprop', 'ro.product.manufacturer'], capture_output=True)
+                os.chdir(adb_is_true[1])
+                if s_os == "Windows":
+                    c_manufacturer = subprocess.run(['adb', 'shell', 'getprop', 'ro.product.manufacturer'], capture_output=True)
+                elif s_os.endwith("Linux") or s_os == "Linux":
+                    c_manufacturer = subprocess.run('./adb', 'shell', 'getprop', 'ro.product.manufacturer'], capture_output=True)}
         else:
             if isinstance(adb_is_true, bool)
                 if adb_is_true:
-                    if is_device_trusted
-                        c_manufacturer = subprocess.run(['adb', 'shell', 'getprop', 'ro.product.manufacturer'], capture_output=True)
+                    c_manufacturer = subprocess.run(['adb', 'shell', 'getprop', 'ro.product.manufacturer'], capture_output=True)
             else:
                 if adb_is_true == "built-in":
-                    if is_device_trusted
-                        c_manufacturer = adbc.prop.get("ro.product.manufacturer")
+                    c_manufacturer = adbc.prop.get("ro.product.manufacturer")
         return c_manufacturer
