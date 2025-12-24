@@ -115,12 +115,8 @@ if __name__ == "__main__":
     input()
 
     c_os = AdbCheckcomputer.check_computer()
-        print(c_os)
+    print(c_os)
 
     print("Press enter to initiate adb check test")
     input()
-
-    if isinstance(c_os, list):
-        AdbCheckcomputer.check_adb(c_os[0])
-    else:
-        AdbCheckcomputer.check_adb(c_os)
+    AdbCheckcomputer.check_adb(c_os)
