@@ -15,7 +15,7 @@ class AdbCheckClient:
                     adb_c_slash_d_check_cmd = subprocess.run(['./adb', 'devices'], capture_output=True).stdout
                     if 'unauthorized' in adb_c_slash_d_check_cmd:
                         pass #just like below basically
-        elif isinstance(adb_is_true, boolean)
+        elif isinstance(adb_is_true, bool)
             if adb_is_true:
                 adb_c_slash_d_check_cmd = subprocess.run(['adb', 'devices'], capture_output=True).stdout
                 if 'unauthorized' in adb_c_slash_d_check_cmd:
@@ -47,7 +47,7 @@ class AdbCheckClient:
                     elif s_os.endwith("Linux") or s_os == "Linux":
                         c_manufacturer = subprocess.run('./adb', 'shell', 'getprop', 'ro.product.manufacturer'], capture_output=True)
         else:
-            if isinstance(adb_is_true, boolean)
+            if isinstance(adb_is_true, bool)
                 if adb_is_true:
                     if is_device_trusted
                         c_manufacturer = subprocess.run(['adb', 'shell', 'getprop', 'ro.product.manufacturer'], capture_output=True)
