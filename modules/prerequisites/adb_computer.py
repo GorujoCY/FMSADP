@@ -25,8 +25,7 @@ class AdbCheckComputer:
                 else:
                     return "Fedora Linux"
             else:
-                raise Warning("Unable to detect or missing linux distributions, currently the ones supported are: Fedora, Ubuntu/Debian and Arch. Assuming Generic distro.")
-                return "Linux"
+                raise Warning("Unable to detect or missing linux distributions, currently the ones supported are: Fedora, Ubuntu/Debian and Arch. Assuming Generic distro. \nSpecify the package manager of your distro for the time being below \n\n")
         else:
             raise Warning("Unable to detect your OS (it is likely you're using BSD, Android or MacOS), but you may be able to continue assuming you already have ADB, the prerequisite process is currently for Linux and Windows")
 
@@ -41,7 +40,7 @@ class AdbCheckComputer:
                 print("Did not find adb, you can either let us install adb using your package manager or specify the directory adb is located or use the built-in adb module")
                 print("1. Install ADB")
                 print("2. Manally specify ADB Directory")
-                print("3. use built-in ADB module [NOT RECOMMENDED]")
+                print("3. use built-in ADB module")
                 choices1 = input(int("1/2/3>"))
                 if choices2 == 3:
                     return "built-in"
@@ -71,7 +70,7 @@ class AdbCheckComputer:
                         print("For fedora atomic or distros based on it, they use `rpm-ostree` for the package manager meaning you would need to reboot the pc and in turn the program. I advise on reconsidering your choice.\n\n")
                         print("1. Confirm")
                         print("2. Manally specify ADB Directory")
-                        print("3. use built-in ADB module [NOT RECOMMENDED]")
+                        print("3. use built-in ADB module")
                         choices1 = input(int("1/2/3>"))
                         if choices2 == 3:
                             return "built-in"
@@ -96,7 +95,7 @@ class AdbCheckComputer:
                 print("Did not find adb, you can either let us install adb using Winget or specify the directory adb is located or use the built-in adb module")
                 print("1. Install ADB")
                 print("2. Manally specify ADB Directory")
-                print("3. use built-in ADB module [NOT RECOMMENDED (And nor is/will it tested)]")
+                print("3. use built-in ADB module")
                 choices2 = input(int("1/2/3>"))
                 if choices2 == 3:
                     return "built-in"
@@ -115,8 +114,15 @@ if __name__ == "__main__":
     input()
 
     c_os = AdbCheckcomputer.check_computer()
-    print(c_os)
+    if isinstance(os, list):
+        print(c_os[0])
+    else:
+        print(c_os)
 
     print("Press enter to initiate adb check test")
     input()
-    AdbCheckcomputer.check_adb(c_os)
+
+    if isinstance(os, list):
+        AdbCheckcomputer.check_adb(c_os[0])
+    else:
+        AdbCheckcomputer.check_adb(c_os)
