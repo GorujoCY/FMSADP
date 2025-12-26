@@ -41,14 +41,14 @@ class AdbCheckComputer:
                 print("1. Install ADB")
                 print("2. Manally specify ADB Directory")
                 print("3. use built-in ADB module")
-                choices1 = input(int("1/2/3>"))
-                if choices2 == 3:
+                choices1 = int(input("1/2/3>"))
+                if choices1 == 3:
                     return "built-in"
-                if choices2 == 2:
+                if choices1 == 2:
                     adbdir = input("Drag and Drop or Specify the directory ADB is located: ")
-                    return [True, adbdir]
+                    return [True, adbdir.strip(' ')] #for my testing when dragging the folder it adds a space so I make it automatically remove any spacing
                 if choices1 == 1:
-                    if c_os.startswith("Debian") or os.startswith("Ubuntu"):
+                    if c_os.startswith("Debian") or c_os.startswith("Ubuntu"):
                         print("Installing `android-sdk`, you will be prompted your sudo user password")
                         os.system("sudo apt install android-sdk")
                         return True
@@ -71,13 +71,13 @@ class AdbCheckComputer:
                         print("1. Confirm")
                         print("2. Manally specify ADB Directory")
                         print("3. use built-in ADB module")
-                        choices1 = input(int("1/2/3>"))
+                        choices2 = int(input("1/2/3>"))
                         if choices2 == 3:
                             return "built-in"
                         if choices2 == 2:
-                            input("Drag and Drop or Specify the directory ADB is located: ")
-                            return [True, adbdir]
-                        if choices1 == 1:
+                            adbdir = input("Drag and Drop or Specify the directory ADB is located: ")
+                            return [True, adbdir.strip(' ')]
+                        if choices2 == 1:
                             print ("Installing `android-tools`, you will be prompted with your user pasword")
                             os.system("sudo rpm-ostree install android-tools")
                             return True
@@ -96,24 +96,20 @@ class AdbCheckComputer:
                 print("1. Install ADB")
                 print("2. Manally specify ADB Directory")
                 print("3. use built-in ADB module")
-                choices2 = input(int("1/2/3>"))
-                if choices2 == 3:
+                choices3 = int(input("1/2/3>"))
+                if choices3 == 3:
                     return "built-in"
-                if choices2 == 2:
+                if choices3 == 2:
                     abdpath = input("Drag and Drop or Specify the directory ADB is located: ")
                     return [True, adbdir]
-                if choices1 == 1:
+                if choices3 == 1:
                     os.system('winget install Google.PlatformTools')
                     print("Press enter to restart sotware for 'adb' command to work")
                     input()
                     os.execv(sys.executable)
 
 if __name__ == "__main__":
-
-    print("Press enter to initiate test")
-    input()
-
-    c_os = AdbCheckcomputer.check_computer()
+    c_os = AdbCheckComputer.check_computer()
     if isinstance(os, list):
         print(c_os[0])
     else:
@@ -123,6 +119,6 @@ if __name__ == "__main__":
     input()
 
     if isinstance(os, list):
-        AdbCheckcomputer.check_adb(c_os[0])
+        AdbCheckComputer.check_adb(c_os[0])
     else:
-        AdbCheckcomputer.check_adb(c_os)
+        AdbCheckComputer.check_adb(c_os)
