@@ -4,7 +4,7 @@ import sys
 
 class AdbCheckComputer:
 
-    def check_computer():
+    def check_os():
         c_os = platform.system()
         if c_os == "Windows":
             return c_os
@@ -25,7 +25,8 @@ class AdbCheckComputer:
                 else:
                     return "Fedora Linux"
             else:
-                raise Warning("Unable to detect or missing linux distributions, currently the ones supported are: Fedora, Ubuntu/Debian and Arch. Assuming Generic distro. \nSpecify the package manager of your distro for the time being below \n\n")
+                raise Warning("Unable to detect or missing linux distributions, currently the ones supported are: Fedora, Ubuntu/Debian, Arch & Gentoo. Assuming Generic distro.")
+                return c_os
         else:
             raise Warning("Unable to detect your OS (it is likely you're using BSD, Android or MacOS), but you may be able to continue assuming you already have ADB, the prerequisite process is currently for Linux and Windows")
 
@@ -45,8 +46,29 @@ class AdbCheckComputer:
                 if choices1 == 3:
                     return "built-in"
                 if choices1 == 2:
-                    adbdir = input("Drag and Drop or Specify the directory ADB is located: ")
-                    return [True, adbdir.strip(' ')] #for my testing when dragging the folder it adds a space so I make it automatically remove any spacing
+
+                    #START of check dir
+                    #------------------
+                    curdir1 = os.getcwd()
+                    found_adb = False
+                    while not found_adb:
+                        adbdir = input("Drag and Drop or Specify the directory ADB is located: ").strip(' ')
+                        try:
+                            os.chdir(adbdir)
+                            is_adb_in_dir = os.system("./adb version")
+                            if is_adb_in_dir == 0:
+                                os.chdir(curdir1)
+                                found_adb = True
+                            else:
+                                print('Did not find adb in this directory!')
+                                continue
+                        except FileNotFoundError:
+                            print("No directory found like this!")
+                            continue
+                    #----------------
+                    #END of check dir
+
+                    return [True, adbdir] #for my testing when dragging the folder it adds a space so I make it automatically remove any spacing
                 if choices1 == 1:
                     if c_os.startswith("Debian") or c_os.startswith("Ubuntu"):
                         print("Installing `android-sdk`, you will be prompted your sudo user password")
@@ -75,14 +97,35 @@ class AdbCheckComputer:
                         if choices2 == 3:
                             return "built-in"
                         if choices2 == 2:
-                            adbdir = input("Drag and Drop or Specify the directory ADB is located: ")
-                            return [True, adbdir.strip(' ')]
+
+                            #START of check dir
+                            #------------------
+                            curdir1 = os.getcwd()
+                            found_adb = False
+                            while not found_adb:
+                                adbdir = input("Drag and Drop or Specify the directory ADB is located: ").strip(' ')
+                                try:
+                                    os.chdir(adbdir)
+                                    is_adb_in_dir = os.system("./adb version")
+                                    if is_adb_in_dir == 0:
+                                        os.chdir(curdir1)
+                                        found_adb = True
+                                    else:
+                                        print('Did not find adb in this directory!')
+                                        continue
+                                except FileNotFoundError:
+                                    print("No directory found like this!")
+                                    continue
+                            #----------------
+                            #END of check dir
+
+                            return [True, adbdir]
                         if choices2 == 1:
                             print ("Installing `android-tools`, you will be prompted with your user pasword")
                             os.system("sudo rpm-ostree install android-tools")
                             return True
                     else:
-                        print("Without properly detecting the distro we can't exactly initiate your package manager's command to install android-tools, see how to install it by searching 'Install android platform tools [distro]' if needed or do on your own or restart to get the other choices")
+                        print("Without properly detecting the distro we can't exactly initiate your package manager's command to install android-tools/android-sdk, see how to install it by searching 'Install android platform tools [distro]' if needed or do on your own or restart to get the other choices")
                         input()
                         exit()
 
@@ -100,25 +143,101 @@ class AdbCheckComputer:
                 if choices3 == 3:
                     return "built-in"
                 if choices3 == 2:
-                    abdpath = input("Drag and Drop or Specify the directory ADB is located: ")
-                    return [True, adbdir]
+
+                     #START of check dir
+                     #------------------
+                     curdir1 = os.getcwd()
+                     found_adb = False
+                     while not found_adb:
+                        adbdir = input("Drag and Drop or Specify the directory ADB is located: ").strip(' ')
+                        try:
+                            os.chdir(adbdir)
+                            is_adb_in_dir = os.system("adb version")
+                            if is_adb_in_dir == 0:
+                                os.chdir(curdir1)
+                                found_adb = True
+                            else:
+                                print('Did not find adb in this directory!')
+                                continue
+                        except FileNotFoundError:
+                            print("No directory found like this!")
+                            continue
+                        #----------------
+                        #END of check dir
+
+                return [True, adbdir]
                 if choices3 == 1:
                     os.system('winget install Google.PlatformTools')
                     print("Press enter to restart sotware for 'adb' command to work")
                     input()
                     os.execv(sys.executable)
+        else:
+            print("Do you: \n1. Have ADB Installed? \n2.Want to manually specify directory and let me know how you run ADB? \n3. Use the built-in ADB?")
+            choices4 = int(input("1/2/3>"))
+            if choices4 == 3:
+                return "built-in"
+            if choices4 == 2:
+                abddir = input("Drag and Drop or Specify the directory ADB is located: ").strip(' ')
+                adbcmd = print("How do you run ADB in that directory? \n1. ./adb \n2. adb ")
+                acinput = int(input('1/2>'))
+                if acinput == 1:
+
+                     #START of check dir
+                     #------------------
+                    curdir1 = os.getcwd()
+                    found_adb = False
+                    while not found_adb:
+                        adbdir = input("Drag and Drop or Specify the directory ADB is located: ").strip(' ')
+                        try:
+                            os.chdir(adbdir)
+                            is_adb_in_dir = os.system("./adb version")
+                            if is_adb_in_dir == 0:
+                                os.chdir(curdir1)
+                                found_adb = True
+                            else:
+                                print('Did not find adb in this directory!')
+                                continue
+                        except FileNotFoundError:
+                            print("No directory found like this!")
+                            continue
+                    #----------------
+                    #END of check
+
+                    return [True, adbdir, './adb']
+                elif acinput == 2:
+
+                    #START of check dir
+                    #------------------
+                    curdir1 = os.getcwd()
+                    found_adb = False
+                    while not found_adb:
+                        adbdir = input("Drag and Drop or Specify the directory ADB is located: ").strip(' ')
+                        try:
+                            os.chdir(adbdir)
+                            is_adb_in_dir = os.system("adb version")
+                            if is_adb_in_dir == 0:
+                                os.chdir(curdir1)
+                                found_adb = True
+                            else:
+                                print('Did not find adb in this directory!')
+                                continue
+                        except FileNotFoundError:
+                            print("No directory found like this!")
+                            continue
+                    #----------------
+                    #END of check dir
+
+                    return [True, adbdir, 'adb']
+            if choices4 == 1:
+                return True
+
 
 if __name__ == "__main__":
-    c_os = AdbCheckComputer.check_computer()
-    if isinstance(os, list):
-        print(c_os[0])
+    c_os = AdbCheckComputer.check_os()
+    print(c_os)
+    check_adb_func = AdbCheckComputer.check_adb(c_os)
+    if isinstance(check_adb_func, list):
+        print(check_adb_func[0])
+        print(check_adb_func[1])
     else:
-        print(c_os)
-
-    print("Press enter to initiate adb check test")
-    input()
-
-    if isinstance(os, list):
-        AdbCheckComputer.check_adb(c_os[0])
-    else:
-        AdbCheckComputer.check_adb(c_os)
+        print(check_adb_func)
