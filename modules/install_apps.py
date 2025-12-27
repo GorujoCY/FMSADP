@@ -1,8 +1,8 @@
 import os
-from adbutils import adb
 #from prerequisites.adb_computer import AdbCheckComputer
 #from prerequisites.client import AdbCheckClient
 #uncomment these and below for testing
+from adbutils import adb
 
 class AdbInstallApps:
 
