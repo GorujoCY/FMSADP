@@ -17,7 +17,7 @@ class AdbCheckClient:
                     while adb_c_slash_d_check_cmd == b'List of devices attached\n\n':
                         print("Please connect a device and/or check a guide on how to turn on developer options on your device and go to it. Press enter when you're done!")
                         input()
-                        print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb by default unless you make a xiaomi account or do workarounds (required for app installations to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
+                        print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb and usb debugging (security settings) by default unless you make a xiaomi account or do workarounds (required for app installations and keyboard change to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
                         input()
                         print("Trying again...")
                         adb_c_slash_d_check_cmd = subprocess.run(['adb', 'devices'], capture_output=True).stdout
@@ -43,7 +43,7 @@ class AdbCheckClient:
                     while adb_c_slash_d_check_cmd == b'List of devices attached\n\n':
                         print("Please connect a device and/or check a guide on how to turn on developer options on your device and go to it. Press enter when you're done!")
                         input()
-                        print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb by default unless you make a xiaomi account or do workarounds (required for app installations to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
+                        print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb and usb debugging (security settings) by default unless you make a xiaomi account or do workarounds (required for app installations and keyboard change to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
                         input()
                         print("Trying again...")
                         adb_c_slash_d_check_cmd = subprocess.run(['./adb', 'devices'], capture_output=True).stdout
@@ -67,7 +67,7 @@ class AdbCheckClient:
                     while adb_c_slash_d_check_cmd == b'List of devices attached\n\n':
                         print("Please connect a device and/or check a guide on how to turn on developer options on your device and go to it. Press enter when you're done!")
                         input()
-                        print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb by default unless you make a xiaomi account or do workarounds (required for app installations to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
+                        print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb and usb debugging (security settings) by default unless you make a xiaomi account or do workarounds (required for app installations and keyboard change to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
                         input()
                         print("Trying again...")
                         adb_c_slash_d_check_cmd = subprocess.run(['./adb', 'devices'], capture_output=True).stdout
@@ -93,7 +93,7 @@ class AdbCheckClient:
                 while adb_c_slash_d_check_cmd == b'List of devices attached\n\n':
                     print("Please connect a device and/or check a guide on how to turn on developer options on your device and go to it. Press enter when you're done!")
                     input()
-                    print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb by default unless you make a xiaomi account or do workarounds (required for app installations to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
+                    print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb and usb debugging (security settings) by default unless you make a xiaomi account or do workarounds (required for app installations and keyboard change to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
                     input()
                     print("Trying again...")
                     adb_c_slash_d_check_cmd = subprocess.run(['adb', 'devices'], capture_output=True).stdout
@@ -123,7 +123,7 @@ class AdbCheckClient:
                     except AdbError:
                         print("Please connect the device and check a guide on how to turn on developer options on your device and go to it. Press enter when you're done! (you will get the same prompts if you didnt authorize the device)")
                         input()
-                        print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb by default unless you make a xiaomi account or do workarounds (required for app installations to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
+                        print("Now enable USB Debugging and Authorize your computer (DONT FORGET to also tick Always allow from this computer for a more convenient experience)! \nWARNING: Xiaomi prevents install via usb and usb debugging (security settings) by default unless you make a xiaomi account or do workarounds (required for app installations and keyboard change to work), search for that same guide on how to bypass it or make a temporary account! It is a frustrating limitation that Xiaomi implements that is out of our control. Press enter when done")
                         input()
                         print("Trying again")
                         continue
