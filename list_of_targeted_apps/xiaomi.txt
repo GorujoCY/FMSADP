@@ -1,0 +1,17 @@
+com.miui.calculator
+com.xiaomi.calendar
+com.mi.android.globalFileexplorer
+com.android.soundrecorder
+com.android.camera
+com.android.deskclock
+com.miui.player
+com.miui.notes
+com.miui.home
+DISABLE com.miui.videoplayer
+com.miui.gallery
+DISABLE com.mi.globalbrowser
+com.xiaomi.scanner
+com.miui.compass
+com.miui.weather2
+com.android.thememanager
+com.miui.miservice

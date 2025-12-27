@@ -1,0 +1,7 @@
+xiaomi: tested on redmi note 8 pro running MIUI 12.5
+google_apps: based off Samsung Galaxy A52s and redmi note 8 pro preloaded | I have tried GmapsWV with chrome uninstalled, working fine
+
+samsung:
+- based off the Galaxy A52s on Android 14 and itentionally installing some samsung apps
+- also a keyboard with direct boot is a MUST BEFORE uninstalling the stock keyboard app ABOVE ALL ELSE (AnySoftKeyboard is the only FOSS Keyboard and FUTO does not support Direct Boot)
+- Confirmed uninstalling the OneUI Launcher does in fact break recents app, Uninstalling it will not be accepted (PR or Otherwise)
