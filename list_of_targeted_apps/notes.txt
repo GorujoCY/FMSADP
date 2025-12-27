@@ -1,7 +1,21 @@
-xiaomi: tested on redmi note 8 pro running MIUI 12.5
-google_apps: based off Samsung Galaxy A52s and redmi note 8 pro preloaded | I have tried GmapsWV with chrome uninstalled, working fine
+xiaomi:
+- tested on redmi note 8 pro running MIUI 12.5
+- Nothing noteworthy other than how stupidly annoying (xiaomi account (that disgustingly denies proton addresses) & sim card required bleh) it is just to get usb debugging security settings and let alone install via usb outside of MIUI
+
+google_apps:
+- based off Samsung Galaxy A52s and redmi note 8 pro preloaded
+- I have tried GmapsWV with chrome uninstalled, working fine
 
 samsung:
 - based off the Galaxy A52s on Android 14 and itentionally installing some samsung apps
 - also a keyboard with direct boot is a MUST BEFORE uninstalling the stock keyboard app ABOVE ALL ELSE (AnySoftKeyboard is the only FOSS Keyboard and FUTO does not support Direct Boot)
 - Confirmed uninstalling the OneUI Launcher does in fact break recents app, Uninstalling it will not be accepted (PR or Otherwise)
+
+to be tested: Hopefully my friend allows me to borrow the Vivo X300 for a while to do testing and who knows likely keep it this way after it is stable enough and give it back after borrowing
+
+Other OEMs I will be adding slowly will be using APKMirror and will be untested so this is relied on Owners of these devices to be tested (unless I get to borrow or buy one but I digress). Owners of other samsung or xiaomi devices is also encouraged to report any issues ASAP to be resolved in an update.
+
+
+OEMs that yet dont have support for this will skip and it is up to the user to disable/uninstall (using Universal Android Debloater Next Generation or Canta + Shizuku) those apps themselves unless they're willing to do their own testing and contribute!
+
+Apps marked with DISABLED signals the software to disable them instead, either for necessary reasons (Some apps depend on Google Play Store being available, notable example I recently noticed is play store version of Acode) or it has been tested that the OEM's Version of Android has refused this specific app to be uninstalled (smh) and falls back to disabling
