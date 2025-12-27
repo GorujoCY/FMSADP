@@ -8,7 +8,7 @@ google_apps:
 
 samsung:
 - based off the Galaxy A52s on Android 14 and itentionally installing some samsung apps
-- also a keyboard with direct boot is a MUST BEFORE uninstalling the stock keyboard app ABOVE ALL ELSE (AnySoftKeyboard is the only FOSS Keyboard and FUTO does not support Direct Boot)
+- also a keyboard with direct boot is a MUST BEFORE uninstalling the stock keyboard app ABOVE ALL ELSE
 - Confirmed uninstalling the OneUI Launcher does in fact break recents app, Uninstalling it will not be accepted (PR or Otherwise)
 - Despite the research I did not do a proper testing yet, discretion is advised
 
