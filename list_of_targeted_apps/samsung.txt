@@ -8,5 +8,4 @@ com.sec.android.app.clockpackage
 com.sec.android.app.music
 com.sec.android.app.popupcalculator
 com.sec.android.app.myfiles
-com.samsung.android.honeyboard
 com.samsung.android.app.notes
