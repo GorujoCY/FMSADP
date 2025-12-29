@@ -6,7 +6,6 @@ com.android.camera
 com.android.deskclock
 com.miui.player
 com.miui.notes
-com.miui.home
 DISABLE com.miui.videoplayer
 com.miui.gallery
 DISABLE com.mi.globalbrowser
