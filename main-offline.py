@@ -72,7 +72,7 @@ else:
         AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/when_consented_by_user/aurora_store')
 
 #finally change the launcher and Keyboard
-if checked_adb == 'built_in':
+if checked_adb == 'built-in':
     AdbChangeKeyboardLauncher.change_some_apps(checked_adb, computer_os, adb_device)
 else:
     AdbChangeKeyboardLauncher.change_some_apps(checked_adb, computer_os)
@@ -85,7 +85,7 @@ else:
 
 #fun fact: most if not all chinese manufacturers include some form of system google apps on their global versions (eg. my Xiaomi had google contacts, google phone and google messages [which fair enough on the last one we normally install it]), that's why the list includes those
 
-if checked_adb == 'built_in':
+if checked_adb == 'built-in':
     with open('list_of_targeted_system_apps/google_apps.txt') as gappsfilelist:
         AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, gappsfilelist.readlines(), adb_device)
 
@@ -111,7 +111,7 @@ else:
 
 #Finally time for manufacturer specific
 apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os)
-if checked_adb == 'built_in':
+if checked_adb == 'built-in':
     apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os, adb_device)
     if apmanufacturer == 'Xiaomi':
         with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
