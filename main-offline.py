@@ -41,6 +41,9 @@ while install_browser_choice not in (1, 2):
     if install_browser_choice not in (1, 2):
         print('Please select the choice by typing number 1 or 2')
         continue
+#END Browser question
+
+
 
 #now begins the main bits
 
