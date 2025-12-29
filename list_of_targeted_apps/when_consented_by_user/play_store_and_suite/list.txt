@@ -1,5 +1,0 @@
-com.google.android.gm
-DISABLE com.android.vending
-com.google.android.apps.docs
-com.google.android.calendar
-com.google.android.apps.subscriptions.red
