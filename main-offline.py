@@ -115,7 +115,7 @@ if checked_adb == 'built-in':
     apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os, adb_device)
     if apmanufacturer == 'Xiaomi':
         with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
-            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines())
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines(), adb_device)
     else:
         pass #basically add a messagee basically saying sorry no list yet for your manufacturer
 
