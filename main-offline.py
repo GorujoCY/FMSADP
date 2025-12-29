@@ -4,7 +4,7 @@ from modules.install_apps import AdbInstallApps
 from modules.change_keyboard_and_launcher import AdbChangeKeyboardLauncher
 from modules.uninstall_system_equivalents import AdbUninstallSystemEquivalents
 
-#yup prerquisites is as simple as that now
+#yup prerequisites is as simple as that
 computer_os = AdbCheckComputer.check_os()
 
 checked_adb = AdbCheckComputer.check_adb(computer_os)
@@ -66,5 +66,55 @@ if checked_adb == 'built_in':
 else:
     AdbChangeKeyboardLauncher.change_some_apps(checked_adb, computer_os)
 
-#Finally lets uninstall for currently supported manufacturers
+
+
+#Finally lets uninstall for supported manufacturers
+
+#But first the google apps
+
+#fun fact: most if not all chinese manufacturers include some form of system google apps on their global versions (eg. my Xiaomi had google contacts, google phone and google messages [which fair enough on the last one we normally install it]), that's why the list includes those
+
+if checked_adb == 'built_in':
+    with open('list_of_targeted_system_apps/google_apps.txt') as gappsfilelist:
+        AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, gappsfilelist.readlines(), adb_device)
+
+    #Sort out the user's prayers
+    if playstore_to_aurora_yn.upper() in ('Y', 'YES'):
+        with open('list_of_targeted_system_apps/when_consented_by_user/just_for_aurora.txt') as aurora_disable:
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, aurora_disable.readlines(), adb_device)
+    if google_suite_to_proton_yn.upper() in ('Y', 'YES'):
+         with open('list_of_targeted_system_apps/when_consented_by_user/just_proton_suite.txt') as g_to_p_file_list:
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, g_to_p_file_list.readlines(), adb_device)
+else:
+    with open('list_of_targeted_system_apps/google_apps.txt') as gappsfilelist:
+        AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, gappsfilelist.readlines())
+
+    #Sort out the user's prayers
+    if playstore_to_aurora_yn.upper() in ('Y', 'YES'):
+        with open('list_of_targeted_system_apps/when_consented_by_user/just_for_aurora.txt') as aurora_disable:
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, aurora_disable.readlines())
+    if google_suite_to_proton_yn.upper() in ('Y', 'YES'):
+         with open('list_of_targeted_system_apps/when_consented_by_user/just_proton_suite.txt') as g_to_p_file_list:
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, g_to_p_file_list.readlines())
+
+
+#Finally time for manufacturer specific
+apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os)
+if checked_adb == 'built_in':
+    apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os, adb_device)
+    if apmanufacturer == 'Xiaomi':
+        with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines())
+    else:
+        pass #basically add a messagee basically saying sorry no list yet for your manufacturer
+
+else:
+    if apmanufacturer.decode().replace('\n', '') == 'Xiaomi':
+        with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines())
+    #add any other supported brands, in this case so far samsung
+    #eg. elif apmanufacturer.decode().replace('\n', '') == 'Manufacturer':
+    else:
+        pass #basically add a messagee basically saying sorry no list yet for your manufacturer
+
 #finally make an obtainium config
