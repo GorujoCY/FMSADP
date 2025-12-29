@@ -1,6 +1,7 @@
 xiaomi:
 - tested on redmi note 8 pro running MIUI 12.5
 - Nothing noteworthy other than how stupidly annoying (xiaomi account (that disgustingly denies proton addresses) & sim card required bleh) it is just to get usb debugging security settings and let alone install via usb outside of MIUI
+- Seems like xiaomi started having the same as samsung with recent apps not working when system launcher is disabled, same rule applies
 
 google_apps:
 - based off Samsung Galaxy A52s and redmi note 8 pro preloaded
@@ -9,12 +10,19 @@ google_apps:
 samsung:
 - based off the Galaxy A52s on Android 14 and itentionally installing some samsung apps
 - also a keyboard with direct boot is a MUST BEFORE uninstalling the stock keyboard app ABOVE ALL ELSE (or just keep the system keyboard for this alongside the other)
-- Confirmed uninstalling the OneUI Launcher does in fact break recents app, Uninstalling it will not be accepted (PR or Otherwise)
+- Confirmed uninstalling the OneUI Launcher does in fact break recents menu, Uninstalling it will not be accepted (PR or Otherwise)
 - Despite the research I did not do a proper testing yet, discretion is advised
+
+
+
+General rules:
+1. Do not disable or uninstall launcher, Reason: they break some core functionality but especially noticeable with the recent apps just simply refusing to work, back and home buttons seem to not break
+2. Do not disable or uninstall system keyboard, Reason: while keeping futo keyboard by itself is adequate as it has support for direct boot (for BFU Password lockscreen), you'll never know when android needs to fallback to a guaranteed working keyboard on direct boot in case of crash, bug or glitch occurs. (Direct Boot also knows as BFU State)
 
 to be tested: Hopefully my friend allows me to borrow the Vivo X300 for a while to do testing and who knows likely keep it this way after it is stable enough and give it back after borrowing
 
 Other OEMs I will be adding slowly will be using APKMirror and will be untested so this is relied on Owners of these devices to be tested (unless I get to borrow or buy one but I digress). Owners of other samsung or xiaomi devices is also encouraged to report any issues ASAP to be resolved in an update.
+
 
 
 OEMs that yet dont have support for this will skip and it is up to the user to disable/uninstall (using Universal Android Debloater Next Generation or Canta + Shizuku) those apps themselves unless they're willing to do their own testing and contribute!
