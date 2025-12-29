@@ -16,7 +16,7 @@ samsung:
 
 
 General rules:
-1. Do not disable or uninstall launcher, Reason: they break some core functionality but especially noticeable with the recent apps just simply refusing to work, back and home buttons seem to not break
+1. Do not disable or uninstall system launcher, Reason: they break some core functionality but especially noticeable with the recent apps just simply refusing to work, back and home buttons seem to not break
 2. Do not disable or uninstall system keyboard, Reason: while keeping futo keyboard by itself is adequate as it has support for direct boot (for BFU Password lockscreen), you'll never know when android needs to fallback to a guaranteed working keyboard on direct boot in case of crash, bug or glitch occurs. (Direct Boot also knows as BFU State)
 
 to be tested: Hopefully my friend allows me to borrow the Vivo X300 for a while to do testing and who knows likely keep it this way after it is stable enough and give it back after borrowing
