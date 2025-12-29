@@ -12,33 +12,33 @@ class AdbInstallApps:
                 os.chdir(is_adb_established[1])
                 if c_os == "Windows":
                     if online_or_offline == 'offline':
-                        for apks in os.listdir(apks_path):
+                        for apks in [f for f in os.listdir(apks_path) if os.path.isfile(f)]:
                             os.system(f'adb install {apks_path}/{apks}')
                     elif online_or_offline == 'online':
                         pass # make a file that has all the download urls and distinctly also install them
                 elif c_os.endswith("Linux") or c_os == 'Linux':
                     if online_or_offline == 'offline':
-                        for apks in os.listdir(apks_path):
+                        for apks in [f for f in os.listdir(apks_path) if os.path.isfile(f):
                             os.system(f'./adb install {apks_path}/{apks}')
                     elif online_or_offline == 'online':
                         pass # make a file that has all the download urls and distinctly also install them
                 else:
                     if is_adb_established:
                         if online_or_offline == 'offline':
-                            for apks in os.listdir(apks_path):
-                                os.system(f'{is_adb_established[2]} install {apks}')
+                            for apks in [f for f in os.listdir(apks_path) if os.path.isfile(f):
+                                os.system(f'{is_adb_established[2]} install {apks_path}/{apks}')
                         elif online_or_offline == 'online':
                             pass # make a file that has all the download urls and distinctly also install them
         elif isinstance(is_adb_established, bool):
             if is_adb_established:
                 if online_or_offline == 'offline':
-                    for apks in os.listdir(apks_path):
+                    for apks in [f for f in os.listdir(apks_path) if os.path.isfile(f):
                         os.system(f'adb install {apks_path}/{apks}')
                 elif online_or_offline == 'online':
                     pass # make a file that has all the download urls and distinctly also install them
         elif is_adb_established == 'built-in':
             if online_or_offline == 'offline':
-                for apks in os.listdir(apks_path):
+                for apks in [f for f in os.listdir(apks_path) if os.path.isfile(f)):
                     adb_device.install(f'{apks_path}/{apks}')
             elif online_or_offline == 'online':
                 pass # make a file that has all the download urls and distinctly also install them
