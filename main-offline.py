@@ -3,14 +3,27 @@ from modules.prerequisites.client import AdbCheckClient
 from modules.install_apps import AdbInstallApps
 from modules.change_keyboard_and_launcher import AdbChangeKeyboardLauncher
 from modules.uninstall_system_equivalents import AdbUninstallSystemEquivalents
+import os
+import time
 
 #yup prerequisites is as simple as that
+global computer_os
 computer_os = AdbCheckComputer.check_os()
 
 checked_adb = AdbCheckComputer.check_adb(computer_os)
 
 adb_device = AdbCheckClient.authorize_device_adb(checked_adb, computer_os)
 
+def clear_screen():
+    if computer_os.endswith('Linux') or computer_os == 'Linux':
+        os.system('clear')
+    elif computer_os == 'Windows':
+        os.system('cls')
+    else:
+        os.system('clear')
+        os.system('clear')
+
+clear_screen()
 
 #START Yes/No question 1
 print('Replace Play Store with Aurora Store?')
@@ -22,15 +35,19 @@ while playstore_to_aurora_yn.upper() not in ('NO', 'N', 'YES', 'Y'):
         continue
 #END Yes/No question 1
 
+clear_screen()
+
 #START Yes/No question 2
 print('Replace Google Suite with Proton Suite?')
 google_suite_to_proton_yn = ''
 while google_suite_to_proton_yn.upper() not in ('NO', 'N', 'YES', 'Y'):
-    playstore_to_aurora_yn = input('(Y)es/(N)o>')
+    google_suite_to_proton_yn = input('(Y)es/(N)o>')
     if google_suite_to_proton_yn.upper() not in ('NO', 'N', 'YES', 'Y'):
         print('Please just say "Y/y" or "N/n", "YES/yes" or "NO/no"')
         continue
 #END Yes/No question 2
+
+clear_screen()
 
 #START Browser question
 print('Brave (Like Chrome but better) or Firefox (Ironfox)?')
@@ -43,7 +60,9 @@ while install_browser_choice not in (1, 2):
         print('Please select the choice by typing number 1 or 2')
         continue
 #END Browser question
-
+print('Thank you for answering...')
+time.sleep(3)
+clear_screen()
 
 #now begins the main bits
 #installing
@@ -116,16 +135,56 @@ if checked_adb == 'built-in':
     if apmanufacturer == 'Xiaomi':
         with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines(), adb_device)
+            print('Done, check your phone now!')
+            input()
+            exit()
+    elif apmanufacturer == 'Samsung':
+        with open('list_of_targeted_system_apps/samsung.txt') as samsung_list:
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, samsung_list.readlines(), adb_device)
+            print('Done, check your phone now!')
+            input()
+            exit()
     else:
-        pass #basically add a messagee basically saying sorry no list yet for your manufacturer
-
+         print('Sorry about that, the program currently does not support your manufacturer. Feel free to open an issue in codeberg with your phone manufacturer and willigness to (briefly) test your device to help and contribute to the project if you are willing to!')
+         print('===============================================================================================================================================================')
+         print("Support gets added manually and slowly but more often it will be untested and you will be warned if that's the case as to report issues")
+         print('Apologies for the inconvenicence, But it is not over, check out these projects to do your own manual uninstallation (it is advised to stick with packages tagged recommended)!')
+         print('Cantas (+ Shizuku): https://samolego.github.io/Canta/')
+         print('Universal Android Debloater next generation: https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation')
+         print('========================================================================================================================================')
+         print("Thank for your understanding, Press enter to exit when you're done")
+         input()
+         exit()
 else:
     if apmanufacturer.decode().replace('\n', '') == 'Xiaomi':
         with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines())
-    #add any other supported brands, in this case so far samsung
-    #eg. elif apmanufacturer.decode().replace('\n', '') == 'Manufacturer':
+            print('Done, check your phone now!')
+            input()
+            exit()
+    elif apmanufacturer.decode().replace('\n', '') == 'Samsung':
+        with open('list_of_targeted_system_apps/samsung.txt') as samsung_list:
+            AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, samsung_list.readlines())
+            print('Done, check your phone now!')
+            input()
+            exit()
     else:
-        pass #basically add a messagee basically saying sorry no list yet for your manufacturer
+         print('Sorry about that, the program currently does not support your manufacturer. Feel free to open an issue in codeberg with your phone manufacturer and willigness to (briefly) test your device to help and contribute to the project if you are willing to!')
+         print('===============================================================================================================================================================')
+         print("Support gets added manually and slowly but more often it will be untested and you will be warned if that's the case as to report issues")
+         print('Apologies for the inconvenicence, But it is not over, check out these projects to do your own manual uninstallation (it is advised to stick with the recommended)!')
+         print('Cantas (+ Shizuku): https://samolego.github.io/Canta/')
+         print('Universal Android Debloater next generation: https://github.com/Universal-Debloater-Alliance/universal-android-debloater-next-generation')
+         print('========================================================================================================================================')
+         print("Thank for your understanding, Press enter to exit when you're done")
+         input()
+         exit()
 
-#finally make an obtainium config
+#Notes for above function
+#add any other supported brands, in this case so far samsung
+#eg. elif apmanufacturer.decode().replace('\n', '') == 'Manufacturer':
+#when needing to warn for untested add the following code
+#print('WARNING: The manufacturer detected has been untested! \nYou may be able to continue however if you have spotted any issue please report it on our codeberg repo under 'Issues' and clearly describe what went wrong to resolve it for the hassle to be avoided. \nYou have been warned and and thank you for understanding, Press enter if you wanna continue or otherwise exit the program now!')
+#input()
+
+#Fianlly add an obtainium config

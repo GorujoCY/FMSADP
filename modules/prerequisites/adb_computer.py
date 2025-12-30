@@ -131,7 +131,7 @@ class AdbCheckComputer:
 
         elif c_os == "Windows":
             adbexists_W = os.system("where adb")
-            if adbexists_L == 0:
+            if adbexists_W == 0:
                 print("Found ADB installed on your PC!")
                 return True
             else:
