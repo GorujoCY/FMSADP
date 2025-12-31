@@ -19,7 +19,7 @@ class AdbChangeKeyboardLauncher:
                     os.system('./adb shell ime set org.futo.inputmethod.latin/.LatinIME')
                 else:
                     os.system(f'{is_adb_established[1]} shell pm set-home-activity org.fossify.home/.MainActivity')
-                    os.system(f'{is_adb_established[1]} shell ime org.futo.inputmethod.latin/.LatinIME')
+                    os.system(f'{is_adb_established[1]} shell ime enable org.futo.inputmethod.latin/.LatinIME')
                     os.system(f'{is_adb_established[1]} shell ime set org.futo.inputmethod.latin/.LatinIME')
         elif isinstance(is_adb_established, bool):
             if is_adb_established:
