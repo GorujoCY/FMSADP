@@ -3,6 +3,7 @@ from modules.prerequisites.client import AdbCheckClient
 from modules.install_apps import AdbInstallApps
 from modules.change_keyboard_and_launcher import AdbChangeKeyboardLauncher
 from modules.uninstall_system_equivalents import AdbUninstallSystemEquivalents
+from modules.push_obtainium_config import AdbPushObtainiumConfig
 import os
 import time
 
@@ -128,6 +129,17 @@ else:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, g_to_p_file_list.readlines())
 
 
+    #Put obtainium config to user's device to import for updates while respecting preference
+    if playstore_to_aurora_yn.upper() in ('Y', 'YES') and google_suite_to_proton_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/With_Aurora_and_Proton/obtainium_config.json')
+    elif playstore_to_aurora_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/With_aurora_store/obtainium_config.json')
+    elif google_suite_to_proton_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/Just_Proton_Suite/obtainium_config.json')
+    else:
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/obtainium_config.json')
+
+
 #Finally time for manufacturer specific
 apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os)
 if checked_adb == 'built-in':
@@ -186,5 +198,3 @@ else:
 #when needing to warn for untested add the following code
 #print('WARNING: The manufacturer detected has been untested! \nYou may be able to continue however if you have spotted any issue please report it on our codeberg repo under 'Issues' and clearly describe what went wrong to resolve it for the hassle to be avoided. \nYou have been warned and and thank you for understanding, Press enter if you wanna continue or otherwise exit the program now!')
 #input()
-
-#Fianlly add an obtainium config
