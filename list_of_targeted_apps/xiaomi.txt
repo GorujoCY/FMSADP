@@ -11,7 +11,6 @@ com.miui.gallery
 DISABLE com.mi.globalbrowser
 com.xiaomi.scanner
 com.miui.compass
-com.miui.weather2
 com.android.thememanager
 com.miui.miservice
 com.android.incallui
