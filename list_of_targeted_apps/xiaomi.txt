@@ -13,6 +13,7 @@ com.xiaomi.scanner
 com.miui.compass
 com.android.thememanager
 com.miui.miservice
+com.miui.weather2
 com.miui.screenrecorder
 com.android.incallui
 com.android.mms
