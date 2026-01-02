@@ -13,4 +13,4 @@ https://drive.proton.me/urls/XVH7S82694#AKNWXyL96OOi
 #### You are free to delete `README_cloud_based_gits` folder after if you want
 ### Thank you for understanding
 
-[Uploading...]
+Keep in mind this only concerns offline and not online, workin on a way for bundled apks get extracted runnable in `main-offline-run_this_from_source.py`
