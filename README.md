@@ -26,7 +26,7 @@ The reason that they cannot be in the repo is size limit on each cloud based git
 # Running from source
 0. Install python at https://www.python.org/ or your respective app store or package manager (eg. for winget and windows, open windows terminal and run: `winget install Python.Python.3.14`). On windows **make sure you tick the `PATH` tickbox** for `python` command to work anywhere if using the exe installer
 1. Open your console/terminal (on Linux/Windows it can be done with right click with the exception of Windows 10) Run either `pip install adbutils[apk]` or `pip install -r requirements.txt` on the same directory as the program
-2. run the program on the same terminal with `python main-offline-run_this_from_source.py`
+2. run the program on the same terminal with `python main-offline-run_this_from_source.py` (if necessary replace `python` with `python3`)
 
 # Report Issues
 Feel free to report issues through the forums I shared or for better management open them in either Codeberg or Github and detail what issues you have and whenever related to the program or manufacturer
