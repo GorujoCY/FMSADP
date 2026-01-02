@@ -13,6 +13,17 @@ If you want you may go ahead and get it for yourself instead and extract it unde
 
 The reason that they cannot be in the repo is size limit on each cloud based git platform (limited to either 25 or 100MB per file making it invalid to upload them directly)
 
+## Legal Disclaimer
+```
+MOST OF THE APPS INVOLVED ARE UNDER A FREE AND OPEN SOURCE LICENSE WHERE REDISTRIBUTION IS ALLOWED, NO MODIFICATION IS DONE TO THEM AND THIS CAN BE VERIFIED BY USING THINGS LIKE APP MANAGER (F-Droid/Github one) OR APPVERIFIER OR TRYING TO UPDATE FROM GOOGLE PLAY STORE OR OBTAINIUM AFTER IMPORTING CONFIGURATION. FOR APPS NOT IN AN OPEN SOURCE LICENSE THESE CAN BE INSTALLED BY THE USER THEMSELVES AS OF THE TIME WRITING SO IT WOULDN'T MATTER, IF THERE ARE CHANGES TO AN APP IN REGARDS TO USERS OBTAINING THEM (eg. FUTO apps becomes a pay to install app now from one that is free to install) PLEASE CONTACT ME FOR THAT REGARD THANKS.
+```
+If as a user do not trust the APKs obtained still, feel free to get them for yourself and put them under the `bundled_apks` folder and avoid using the executable that includes them or use the online installer(coming soon). The list of apps are normally:
+- All Fossify Apps
+- FUTO Keyboard and GrayJay
+- Brave or Ironfox
+- Aurora Store (optional)
+- Proton Mail, Drive, Meet(coming after closed beta) and Calendar (optional)
+
 # Running from executables
 
 - For Linux simply double click the executable, if you dont see a terminal, try to right click and run within your respective terminal app (for Dolphin and KDE for example: `right click` on the executable and click `Run in Konsole`)
