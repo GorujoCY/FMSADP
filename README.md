@@ -9,7 +9,7 @@ Codeberg limits file size to 100MB even on releases therefore those coming throu
 # In regards to APKs
 keep in mind that if you run from source, if no bundled apks are found, it requests (with your consent) github for the bundled apks zip. Unless I used tresorit send or pcloud transfer (the fact that both require email to even get me a link, forget it), this isn't possible and there aren't any good options to store at least a gigabyte or 1.1GB file permanently, means I resorted to github releases as the next best option. This is for the sake of making things simpler and to be functioning.
 
-If you want you may go ahead and get it for yourself instead and extract it under the folder name `bundled_apks` for the program to work unless you wanna modify where it points at! You may also obtain a copy of them on [Proton Drive](https://drive.proton.me/urls/D1SEZVCCCR#E3d3QbZmnCVo)
+If you want you may go ahead and get it for yourself instead and extract it under the folder name `bundled_apks` or let them program do it for you, this is needed for the program to work (you may also modify where the folder points at). You may also obtain a copy of them on [Proton Drive](https://drive.proton.me/urls/D1SEZVCCCR#E3d3QbZmnCVo)
 
 The reason that they cannot be in the repo is size limit on each cloud based git platform (limited to either 25 or 100MB per file making it invalid to upload them directly)
 
