@@ -17,6 +17,23 @@ checked_adb = AdbCheckComputer.check_adb(computer_os)
 
 adb_device = AdbCheckClient.authorize_device_adb(checked_adb, computer_os)
 
+
+#since this is a run from source thing lets make it that it gets the zip and extracts
+if os.path.exists('bundled_apks'):
+    pass
+else:
+    print('Welcome! to continue with the offline installation you will need the bundled apks to be installed. \nBy pressing enter, the software will check for ther zip if manually downloaded and extract it for you (make sure it is in the same folder as the program and it is called `bundled_apks.zip`). Otherwise it requests github releases of this project to get the zip and extract to the correct folder for you! If you agree press enter otherwise exit the software!')
+    input()
+    if os.path.isfile(os.path.join(os.getcwd(), 'bundled_apks.zip')):
+        with zipfile.ZipFile('bundled_apks.zip') as tmp_b_a_zip:
+            tmp_b_a_zip.extractall('bundled_apks')
+        os.remove('bundled_apks.zip')
+    else:
+        urllib.request.urlretrieve('github release link to zip', 'temp_bundled_apks.zip')
+        with zipfile.ZipFile('temp_bundled_apks.zip') as tmp_b_a_zip:
+            tmp_b_a_zip.extractall('bundled_apks')
+        os.remove('temp_bundled_apks.zip')
+
 def clear_screen():
     if computer_os.endswith('Linux') or computer_os == 'Linux':
         os.system('clear')
@@ -68,13 +85,6 @@ time.sleep(3)
 clear_screen()
 
 #now begins the main bits
-
-#since this is a run from source thing lets make it that it gets the zip and extracts
-urllib.request.urlretrieve('github release link to zip', 'temp_bundled_apks.zip')
-with zipfile.ZipFile('temp_bundled_apks.zip') as tmp_b_a_zip:
-    tmp_b_a_zip.extractall('bundled_apks')
-os.remove('temp_bundled_apks.zip')
-#done, installation can continue
 
 #installing
 if checked_adb == 'built-in':
