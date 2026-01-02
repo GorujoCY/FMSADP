@@ -10,4 +10,6 @@ keep in mind that if you run from source, it requests (with your consent) github
 
 If you want you may go ahead and get it for yourself instead and extract it under the folder name `bundled_apks` for the program to work unless you wanna modify where it points at! You may also obtain a copy of them on [Proton Drive](https://drive.proton.me/urls/D1SEZVCCCR#E3d3QbZmnCVo)
 
+The reason that they cannot be in the repo is size limit on each cloud based git platform (limited to either 25 or 100MB per file making it invalid to upload them directly)
+
 ### More readme stuff coming soon
