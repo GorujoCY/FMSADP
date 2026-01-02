@@ -1,3 +1,4 @@
+# this is what the executables run, you can run from source if you've already got the folder but for easier use you may run `main-offline-run_this_from_source.py` instead.
 from modules.prerequisites.adb_computer import AdbCheckComputer
 from modules.prerequisites.client import AdbCheckClient
 from modules.install_apps import AdbInstallApps
