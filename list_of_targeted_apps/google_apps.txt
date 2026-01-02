@@ -1,0 +1,11 @@
+com.google.android.contacts
+com.google.android.dialer
+com.google.android.apps.maps
+com.google.android.apps.photos
+com.google.android.youtube
+com.google.android.calculator
+com.google.android.apps.nbu.files
+com.google.android.GoogleCamera
+com.google.android.apps.youtube.music
+com.google.android.deskclock
+com.android.chrome
