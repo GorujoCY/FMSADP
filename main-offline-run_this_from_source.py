@@ -71,7 +71,7 @@ clear_screen()
 
 #since this is a run from source thing lets make it that it gets the zip and extracts
 urllib.request.urlretrieve('github release link to zip', 'temp_bundled_apks.zip')
-with zipfile.ZipFile('temp_bundled_apks.zip') as tmp_b_a_zip
+with zipfile.ZipFile('temp_bundled_apks.zip') as tmp_b_a_zip:
     tmp_b_a_zip.extractall('bundled_apks')
 os.remove('temp_bundled_apks.zip')
 #done, installation can continue
