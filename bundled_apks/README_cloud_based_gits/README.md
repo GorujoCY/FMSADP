@@ -9,6 +9,8 @@ Github has no problem with publishing big releases but codeberg strictly limits 
 
 https://drive.proton.me/urls/XVH7S82694#AKNWXyL96OOi
 
+
+#### You are free to delete `README_cloud_based_gits` folder after if you want
 ### Thank you for understanding
 
 [Uploading...]
