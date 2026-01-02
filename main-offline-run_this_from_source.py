@@ -29,7 +29,7 @@ else:
             tmp_b_a_zip.extractall('bundled_apks')
         os.remove('bundled_apks.zip')
     else:
-        urllib.request.urlretrieve('github release link to zip', 'temp_bundled_apks.zip')
+        urllib.request.urlretrieve('https://github.com/GorujoCY/FMSADP/releases/download/zip-for-bundled_apks-v1/bundled_apks.zip', 'temp_bundled_apks.zip')
         with zipfile.ZipFile('temp_bundled_apks.zip') as tmp_b_a_zip:
             tmp_b_a_zip.extractall('bundled_apks')
         os.remove('temp_bundled_apks.zip')
