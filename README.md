@@ -1,12 +1,12 @@
 # FMSADP
 FMSADP (Fossify(R) My Android Device Please) is a Python Software utilizing the Android(TM) Debug Bridge (ADB) for replacing system apps to a suite of apps. All rights to these respective apps and names belongs to them!
 
-# In concerns of offline release
+# In concerns of offline releases
 Codeberg limits file size to 100MB even on releases therefore those coming through codeberg you can either:
 1. Install from the [Github Releases](https://github.com/GorujoCY/FMSADP/releases/latest)
 2. Install through [Proton Drive](https://drive.proton.me/urls/333Y0RFB4W#SFEO3wys0Uiv) if you for some reason refuse to use github, either option is valid
 
-# In regards to APKs
+# In regards to APKs (offline app)
 keep in mind that if you run from source, if no bundled apks are found, it requests (with your consent) github for the bundled apks zip. Unless I used tresorit send or pcloud transfer (the fact that both require email to even get me a link, forget it), this isn't possible and there aren't any good options to store at least a gigabyte or 1.1GB file permanently, means I resorted to github releases as the next best option. This is for the sake of making things simpler and to be functioning.
 
 If you want you may go ahead and get it for yourself instead and extract it under the folder name `bundled_apks` or let them program do it for you, this is needed for the program to work (you may also modify where the folder points at). You may also obtain a copy of them on [Proton Drive](https://drive.proton.me/urls/D1SEZVCCCR#E3d3QbZmnCVo)
