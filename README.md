@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # FMSADP
 FMSADP (Fossify(R) My Android Device Please) is a Python Software utilizing the Android(TM) Debug Bridge (ADB) for replacing system apps to a suite of apps. All rights to these respective apps and names belongs to them!
 
@@ -50,4 +48,3 @@ Feel free to report issues through the forums I shared or for better management 
 - [ ] complete readme
 - [ ] Templates for issues either on the phone end or program end
 ### More readme stuff coming soon
->>>>>>> dev
