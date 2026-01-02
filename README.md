@@ -13,8 +13,8 @@ If you want you may go ahead and get it for yourself instead and extract it unde
 The reason that they cannot be in the repo is size limit on each cloud based git platform (limited to either 25 or 100MB per file making it invalid to upload them directly)
 
 # TODO
-- [] windows executable
-- [] release online version
-- [] complete readme
+- [ ] windows executable
+- [ ] release online version
+- [ ] complete readme
 
 ### More readme stuff coming soon
