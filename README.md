@@ -48,4 +48,3 @@ Feel free to report issues through the forums I shared or for better management 
 - [ ] complete readme
 - [ ] Templates for issues either on the phone end or program end
 ### More readme stuff coming soon
-.
