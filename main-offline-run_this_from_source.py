@@ -33,6 +33,7 @@ else:
         with zipfile.ZipFile('temp_bundled_apks.zip') as tmp_b_a_zip:
             tmp_b_a_zip.extractall('bundled_apks')
         os.remove('temp_bundled_apks.zip')
+#zip is still uploading -_-
 
 def clear_screen():
     if computer_os.endswith('Linux') or computer_os == 'Linux':
