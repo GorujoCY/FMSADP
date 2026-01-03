@@ -135,7 +135,7 @@ if checked_adb == 'built-in':
     else:
         AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/obtainium_config.json'), adb_device)
 else:
-    with open('list_of_targeted_system_apps/google_apps.txt') as gappsfilelist:
+    with open(resource_path('list_of_targeted_system_apps/google_apps.txt')) as gappsfilelist:
         AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, gappsfilelist.readlines())
 
     #Sort out the user's prayers
