@@ -143,12 +143,12 @@ class AdbCheckComputer:
                 if choices3 == 3:
                     return "built-in"
                 if choices3 == 2:
-
-                     #START of check dir
-                     #------------------
-                     curdir1 = os.getcwd()
-                     found_adb = False
-                     while not found_adb:
+                     
+                    #START of check dir
+                    #------------------
+                    curdir1 = os.getcwd()
+                    found_adb = False
+                    while not found_adb:
                         adbdir = input("Drag and Drop or Specify the directory ADB is located: ").strip(' ')
                         try:
                             os.chdir(adbdir)
