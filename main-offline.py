@@ -142,7 +142,6 @@ else:
 
 
 #Finally time for manufacturer specific
-apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os)
 if checked_adb == 'built-in':
     apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os, adb_device)
     if apmanufacturer == 'Xiaomi':
@@ -169,6 +168,7 @@ if checked_adb == 'built-in':
          input()
          exit()
 else:
+    apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os)
     if apmanufacturer.decode().replace('\n', '') == 'Xiaomi':
         with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines())
