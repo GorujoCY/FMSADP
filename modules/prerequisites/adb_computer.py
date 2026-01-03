@@ -165,7 +165,7 @@ class AdbCheckComputer:
                         #----------------
                         #END of check dir
 
-                return [True, adbdir]
+                    return [True, adbdir]
                 if choices3 == 1:
                     os.system('winget install Google.PlatformTools')
                     print("Press enter to restart sotware for 'adb' command to work")
