@@ -28,6 +28,8 @@ If as a user do not trust the APKs obtained still, feel free to get them for you
 
 # Running from executables
 
+- Download and Extract the respective archive
+
 - For Linux simply double click the executable, if you dont see a terminal, try to right click and run within your respective terminal app (for Dolphin and KDE for example: `right click` on the executable and click `Run in Konsole`)
 
 - For Windows double click the .exe (when that comes out, you can for now start with the run from source if you want)
