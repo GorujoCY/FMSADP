@@ -8,6 +8,13 @@ from modules.push_obtainium_config import AdbPushObtainiumConfig
 import os
 import time
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
+
 #yup prerequisites is as simple as that
 global computer_os
 computer_os = AdbCheckComputer.check_os()
@@ -69,28 +76,28 @@ clear_screen()
 #now begins the main bits
 #installing
 if checked_adb == 'built-in':
-    AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks', adb_device)
+    AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks'), adb_device)
     if install_browser_choice == 1:
-        AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/browsers/brave', adb_device)
+        AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks/browsers/brave'), adb_device)
     elif install_browser_choice == 2:
-        AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/browsers/ironfox', adb_device)
+        AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks/browsers/ironfox'), adb_device)
     #Google Suite to Proton suite
     if google_suite_to_proton_yn.upper() in ('Y', 'YES'):
-        AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/when_consented_by_user/proton_suite', adb_device)
+        AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks/when_consented_by_user/proton_suite'), adb_device)
     if playstore_to_aurora_yn.upper() in ('Y', 'YES'):
-        AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/when_consented_by_user/aurora_store', adb_device)
+        AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks/when_consented_by_user/aurora_store'), adb_device)
 else:
-    AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks')
+    AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks'))
     #browser choice
     if install_browser_choice == 1:
-        AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/browsers/brave')
+        AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks/browsers/brave'))
     elif install_browser_choice == 2:
-        AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/browsers/ironfox')
+        AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks/browsers/ironfox'))
     #Google Suite to Proton suite
     if google_suite_to_proton_yn.upper() in ('Y', 'YES'):
-        AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/when_consented_by_user/proton_suite')
+        AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks/when_consented_by_user/proton_suite'))
     if playstore_to_aurora_yn.upper() in ('Y', 'YES'):
-        AdbInstallApps.install_apps('offline', checked_adb, computer_os, 'bundled_apks/when_consented_by_user/aurora_store')
+        AdbInstallApps.install_apps('offline', checked_adb, computer_os, resource_path('bundled_apks/when_consented_by_user/aurora_store'))
 
 #finally change the launcher and Keyboard
 if checked_adb == 'built-in':
@@ -107,51 +114,61 @@ else:
 #fun fact: most if not all chinese manufacturers include some form of system google apps on their global versions (eg. my Xiaomi had google contacts, google phone and google messages [which fair enough on the last one we normally install it]), that's why the list includes those
 
 if checked_adb == 'built-in':
-    with open('list_of_targeted_system_apps/google_apps.txt') as gappsfilelist:
+    with open(resource_path('list_of_targeted_system_apps/google_apps.txt')) as gappsfilelist:
         AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, gappsfilelist.readlines(), adb_device)
 
     #Sort out the user's prayers
     if playstore_to_aurora_yn.upper() in ('Y', 'YES'):
-        with open('list_of_targeted_system_apps/when_consented_by_user/just_for_aurora.txt') as aurora_disable:
+        with open(resource_path('list_of_targeted_system_apps/when_consented_by_user/just_for_aurora.txt')) as aurora_disable:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, aurora_disable.readlines(), adb_device)
     if google_suite_to_proton_yn.upper() in ('Y', 'YES'):
-         with open('list_of_targeted_system_apps/when_consented_by_user/just_proton_suite.txt') as g_to_p_file_list:
+         with open(resource_path('list_of_targeted_system_apps/when_consented_by_user/just_proton_suite.txt')) as g_to_p_file_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, g_to_p_file_list.readlines(), adb_device)
+
+    #Put obtainium config to user's device to import for updates while respecting preference
+    if playstore_to_aurora_yn.upper() in ('Y', 'YES') and google_suite_to_proton_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/With_Aurora_and_Proton/obtainium_config.json'), adb_device)
+    elif playstore_to_aurora_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/With_aurora_store/obtainium_config.json'), adb_device)
+    elif google_suite_to_proton_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/Just_Proton_Suite/obtainium_config.json'), adb_device)
+    else:
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/obtainium_config.json'), adb_device)
 else:
     with open('list_of_targeted_system_apps/google_apps.txt') as gappsfilelist:
         AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, gappsfilelist.readlines())
 
     #Sort out the user's prayers
     if playstore_to_aurora_yn.upper() in ('Y', 'YES'):
-        with open('list_of_targeted_system_apps/when_consented_by_user/just_for_aurora.txt') as aurora_disable:
+        with open(resource_path('list_of_targeted_system_apps/when_consented_by_user/just_for_aurora.txt')) as aurora_disable:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, aurora_disable.readlines())
     if google_suite_to_proton_yn.upper() in ('Y', 'YES'):
-         with open('list_of_targeted_system_apps/when_consented_by_user/just_proton_suite.txt') as g_to_p_file_list:
+         with open(resource_path('list_of_targeted_system_apps/when_consented_by_user/just_proton_suite.txt')) as g_to_p_file_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, g_to_p_file_list.readlines())
 
 
     #Put obtainium config to user's device to import for updates while respecting preference
     if playstore_to_aurora_yn.upper() in ('Y', 'YES') and google_suite_to_proton_yn.upper() in ('Y', 'YES'):
-        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/With_Aurora_and_Proton/obtainium_config.json')
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/With_Aurora_and_Proton/obtainium_config.json'))
     elif playstore_to_aurora_yn.upper() in ('Y', 'YES'):
-        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/With_aurora_store/obtainium_config.json')
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/With_aurora_store/obtainium_config.json'))
     elif google_suite_to_proton_yn.upper() in ('Y', 'YES'):
-        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/Just_Proton_Suite/obtainium_config.json')
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/Just_Proton_Suite/obtainium_config.json'))
     else:
-        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/obtainium_config.json')
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, resource_path('Obtainium_configs/obtainium_config.json'))
 
 
 #Finally time for manufacturer specific
 if checked_adb == 'built-in':
     apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os, adb_device)
     if apmanufacturer == 'Xiaomi':
-        with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
+        with open(resource_path('list_of_targeted_system_apps/xiaomi.txt')) as xiaomi_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines(), adb_device)
             print('Done, check your phone now!')
             input()
             exit()
     elif apmanufacturer == 'Samsung':
-        with open('list_of_targeted_system_apps/samsung.txt') as samsung_list:
+        with open(resource_path('list_of_targeted_system_apps/samsung.txt')) as samsung_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, samsung_list.readlines(), adb_device)
             print('Done, check your phone now!')
             input()
@@ -170,13 +187,13 @@ if checked_adb == 'built-in':
 else:
     apmanufacturer = AdbCheckClient.check_phone_manufacturer(checked_adb, computer_os)
     if apmanufacturer.decode().replace('\n', '') == 'Xiaomi':
-        with open('list_of_targeted_system_apps/xiaomi.txt') as xiaomi_list:
+        with open(resource_path('list_of_targeted_system_apps/xiaomi.txt')) as xiaomi_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, xiaomi_list.readlines())
             print('Done, check your phone now!')
             input()
             exit()
     elif apmanufacturer.decode().replace('\n', '') == 'Samsung':
-        with open('list_of_targeted_system_apps/samsung.txt') as samsung_list:
+        with open(resource_path('list_of_targeted_system_apps/samsung.txt')) as samsung_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, samsung_list.readlines())
             print('Done, check your phone now!')
             input()

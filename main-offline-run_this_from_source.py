@@ -137,6 +137,16 @@ if checked_adb == 'built-in':
     if google_suite_to_proton_yn.upper() in ('Y', 'YES'):
          with open('list_of_targeted_system_apps/when_consented_by_user/just_proton_suite.txt') as g_to_p_file_list:
             AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, g_to_p_file_list.readlines(), adb_device)
+
+    #Put obtainium config to user's device to import for updates while respecting preference
+    if playstore_to_aurora_yn.upper() in ('Y', 'YES') and google_suite_to_proton_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/With_Aurora_and_Proton/obtainium_config.json', adb_device)
+    elif playstore_to_aurora_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/With_aurora_store/obtainium_config.json', adb_device)
+    elif google_suite_to_proton_yn.upper() in ('Y', 'YES'):
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/Just_Proton_Suite/obtainium_config.json', adb_device)
+    else:
+        AdbPushObtainiumConfig.push_config(checked_adb, computer_os, 'Obtainium_configs/obtainium_config.json', adb_device)
 else:
     with open('list_of_targeted_system_apps/google_apps.txt') as gappsfilelist:
         AdbUninstallSystemEquivalents.uninstall_apps(checked_adb, computer_os, gappsfilelist.readlines())
