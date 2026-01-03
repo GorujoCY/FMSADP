@@ -47,4 +47,5 @@ Feel free to report issues through the forums I shared or for better management 
 - [ ] release online version
 - [ ] complete readme
 - [ ] Templates for issues either on the phone end or program end
+- [ ] Add Brave and Firefox to Obtainium configuration
 ### More readme stuff coming soon
