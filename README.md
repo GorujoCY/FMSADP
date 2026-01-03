@@ -45,7 +45,7 @@ If as a user do not trust the APKs obtained still, feel free to get them for you
 Feel free to report issues through the forums I shared or for better management open them in either Codeberg or Github and detail what issues you have and whenever related to the program or manufacturer
 
 # TODO
-- [ ] windows executable
+- [X] windows executable
 - [ ] release online version
 - [ ] complete readme
 - [ ] Templates for issues either on the phone end or program end
