@@ -46,6 +46,7 @@ Feel free to report issues through the forums I shared or for better management 
 
 # TODO
 - [X] windows executable
+- [X] Fixed releases issue going draft
 - [ ] release online version
 - [ ] complete readme
 - [ ] Templates for issues either on the phone end or program end
