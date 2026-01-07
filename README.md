@@ -30,9 +30,9 @@ If as a user do not trust the APKs obtained still, feel free to get them for you
 
 - For Linux simply double click the executable, if you dont see a terminal, try to right click and run within your respective terminal app (for Dolphin and KDE for example: `right click` on the executable and click `Run in Konsole`)
 
-- For Windows double click the .exe (when that comes out, you can for now start with the run from source if you want)
+- For Windows double click the .exe 
 
-- MacOS I will not be supproting because simply put I do not have a Mac, run from source instead
+- MacOS I will not be supporting because simply put I do not have a Mac, run from source instead
 
 - BSD you can try with the linux compatibility or otherwise same with MacOS, run from source
 
