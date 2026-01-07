@@ -3,10 +3,11 @@ import os
 #from prerequisites.client import AdbCheckClient
 #uncomment these and below for testing
 from adbutils import adb
+import urllib
 
 class AdbInstallApps:
 
-    def install_apps(online_or_offline, is_adb_established, c_os, apks_path=None, adb_device=None):
+    def install_apps(online_or_offline, is_adb_established, c_os, apks_path=None, urls_txt_file=None, adb_device=None):
         if isinstance(is_adb_established, list):
             if is_adb_established[0]:
                 os.chdir(is_adb_established[1])
@@ -15,27 +16,51 @@ class AdbInstallApps:
                         for apks in [f for f in os.listdir(apks_path) if os.path.isfile(os.path.join(apks_path, f))]:
                             os.system(f'adb install {apks_path}/{apks}')
                     elif online_or_offline == 'online':
-                        pass # make a file that has all the download urls and distinctly also install them
+                        with open(urls_txt_file) as txturlsf:
+                            for ul in txturlsf.readlines():
+                                print(f'Downloading and installing from {ul}')
+                                urllib.request.urlretrieve(uf, 'temp.apk')
+                                os.system('adb install temp.apk')
+                                os.remove('temp.apk')
                 elif c_os.endswith("Linux") or c_os == 'Linux':
                     if online_or_offline == 'offline':
                         for apks in [f for f in os.listdir(apks_path) if os.path.isfile(os.path.join(apks_path, f))]:
                             os.system(f'./adb install {apks_path}/{apks}')
                     elif online_or_offline == 'online':
-                        pass # make a file that has all the download urls and distinctly also install them
+                        with open(urls_txt_file) as txturlsf:
+                                for ul in txturlsf.readlines():
+                                    print(f'Downloading and installing from {ul}')
+                                    if ul.startswith('https://api.github.com')
+                                        urllib.request.Request
+
+                                    else:
+                                        urllib.request.urlretrieve(uf, 'temp.apk')
+                                        os.system(f'./adb install temp.apk')
+                                        os.remove('temp.apk')
                 else:
                     if is_adb_established:
                         if online_or_offline == 'offline':
                             for apks in [f for f in os.listdir(apks_path) if os.path.isfile(os.path.join(apks_path, f))]:
                                 os.system(f'{is_adb_established[2]} install {apks_path}/{apks}')
                         elif online_or_offline == 'online':
-                            pass # make a file that has all the download urls and distinctly also install them
+                            with open(urls_txt_file) as txturlsf:
+                                for ul in txturlsf.readlines():
+                                    print(f'Downloading and installing from {ul}')
+                                    urllib.request.urlretrieve(uf, 'temp.apk')
+                                    os.system(f'{is_adb_established[2]} install temp.apk')
+                                    os.remove('temp.apk')
         elif isinstance(is_adb_established, bool):
             if is_adb_established:
                 if online_or_offline == 'offline':
                     for apks in [f for f in os.listdir(apks_path) if os.path.isfile(os.path.join(apks_path, f))]:
                         os.system(f'adb install {apks_path}/{apks}')
                 elif online_or_offline == 'online':
-                    pass # make a file that has all the download urls and distinctly also install them
+                    with open(urls_txt_file) as txturlsf:
+                        for ul in txturlsf.readlines():
+                            print(f'Downloading and installing from {ul}')
+                            urllib.request.urlretrieve(uf, 'temp.apk')
+                            os.system('adb install temp.apk')
+                            os.remove('temp.apk')
         elif is_adb_established == 'built-in':
             if online_or_offline == 'offline':
                 for apks in [f for f in os.listdir(apks_path) if os.path.isfile(os.path.join(apks_path, f))]:
