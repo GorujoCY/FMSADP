@@ -3,7 +3,8 @@ import os
 #from prerequisites.client import AdbCheckClient
 #uncomment these and below for testing
 from adbutils import adb
-import urllib
+import urllib3
+import urllib.request
 
 class AdbInstallApps:
 
@@ -27,16 +28,10 @@ class AdbInstallApps:
                         for apks in [f for f in os.listdir(apks_path) if os.path.isfile(os.path.join(apks_path, f))]:
                             os.system(f'./adb install {apks_path}/{apks}')
                     elif online_or_offline == 'online':
-                        with open(urls_txt_file) as txturlsf:
-                                for ul in txturlsf.readlines():
-                                    print(f'Downloading and installing from {ul}')
-                                    if ul.startswith('https://api.github.com')
-                                        urllib.request.Request
-
-                                    else:
-                                        urllib.request.urlretrieve(uf, 'temp.apk')
-                                        os.system(f'./adb install temp.apk')
-                                        os.remove('temp.apk')
+                        print(f'Downloading and installing from {ul}')
+                        urllib.request.urlretrieve(uf, 'temp.apk')
+                        os.system(f'./adb install temp.apk')
+                        os.remove('temp.apk')
                 else:
                     if is_adb_established:
                         if online_or_offline == 'offline':
@@ -57,10 +52,35 @@ class AdbInstallApps:
                 elif online_or_offline == 'online':
                     with open(urls_txt_file) as txturlsf:
                         for ul in txturlsf.readlines():
-                            print(f'Downloading and installing from {ul}')
-                            urllib.request.urlretrieve(uf, 'temp.apk')
-                            os.system('adb install temp.apk')
-                            os.remove('temp.apk')
+                            if ul.startswith('https://api.github.com'):
+                                with urllib3.request('GET', ul) as gul:
+                                    jsonresponse = gul.json()
+                                    if len(jsonresponse['assets']) >= 1:
+                                        splittedghuburl = urllib.request.urlsplit(ul)
+                                        nameofproject = os.path.dirname(splittedghuburl.replace('/', '').replace('repos', '').replace('releases', ''))
+                                        #what a mouthful of string replacements, im sure there's a polished way but moving on
+                                        if nameofproject == 'ImranR98Obtainium':
+                                                print(f'Downloading and installing from {jsonresponse['assets'][20]['browser_download_url']}')
+                                                urllib.request.urlretrieve(jsonresponse['assets'][20]['browser_download_url'], 'temp.apk')
+                                                os.system('adb install temp.apk')
+                                                os.remove('temp.apk')
+                                        elif nameofproject == 'bravebrave-browser':
+                                            print(f'Downloading and installing from {jsonresponse['assets'][72]['browser_download_url']}')
+                                            urllib.request.urlretrieve(jsonresponse['assets'][72]['browser_download_url'], 'temp.apk')
+                                            os.system('adb install temp.apk')
+                                            os.remove('temp.apk')
+                                    else:
+                                        print(f'Downloading and installing from {jsonresponse['assets'][0]['browser_download_url']}')
+                                        urllib.request.urlretrieve(jsonresponse['assets'][0]['browser_download_url'], 'temp.apk')
+                                        os.system('adb install temp.apk')
+                                        os.remove('temp.apk')
+                            else:
+                                with open(urls_txt_file) as txturlsf:
+                                    for ul in txturlsf.readlines():
+                                        print(f'Downloading and installing from {ul}')
+                                        urllib.request.urlretrieve(uf, 'temp.apk')
+                                        os.system('adb install temp.apk')
+                                        os.remove('temp.apk')
         elif is_adb_established == 'built-in':
             if online_or_offline == 'offline':
                 for apks in [f for f in os.listdir(apks_path) if os.path.isfile(os.path.join(apks_path, f))]:

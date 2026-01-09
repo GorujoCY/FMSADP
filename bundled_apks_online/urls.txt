@@ -1,0 +1,17 @@
+https://api.github.com/repos/ImranR98/Obtainium/releases/latest
+https://api.github.com/repos/FossifyOrg/Gallery/releases/latest
+https://api.github.com/repos/FossifyOrg/Calendar/releases/latest
+https://api.github.com/repos/FossifyOrg/Phone/releases/latest
+https://api.github.com/repos/FossifyOrg/Music-Player/releases/latest
+https://api.github.com/repos/FossifyOrg/Notes/releases/latest
+https://api.github.com/repos/FossifyOrg/Contacts/releases/latest
+https://api.github.com/repos/FossifyOrg/Voice-Recorder/releases/latest
+https://api.github.com/repos/FossifyOrg/Paint/releases/latest
+https://api.github.com/repos/FossifyOrg/Launcher/releases/latest
+https://api.github.com/repos/FossifyOrg/Clock/releases/latest
+https://api.github.com/repos/FossifyOrg/Calculator/releases/latest
+https://api.github.com/repos/GrapheneOS/PdfViewer/releases/latest
+https://api.github.com/repos/GrapheneOS/Camera/releases/latest
+https://releases.grayjay.app/app-universal-release.apk
+https://keyboard.futo.org/keyboard.apk
+
