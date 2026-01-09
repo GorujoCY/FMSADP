@@ -12,6 +12,7 @@ https://api.github.com/repos/FossifyOrg/Clock/releases/latest
 https://api.github.com/repos/FossifyOrg/Calculator/releases/latest
 https://api.github.com/repos/GrapheneOS/PdfViewer/releases/latest
 https://api.github.com/repos/GrapheneOS/Camera/releases/latest
+https://codeberg.org/api/v1/repos/comaps/comaps/releases/latest
 https://releases.grayjay.app/app-universal-release.apk
 https://keyboard.futo.org/keyboard.apk
 

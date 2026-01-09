@@ -56,14 +56,14 @@ class AdbInstallApps:
                                 with urllib3.request('GET', ul) as gul:
                                     jsonresponse = gul.json()
                                     if len(jsonresponse['assets']) >= 1:
-                                        splittedghuburl = urllib.request.urlsplit(ul)
-                                        nameofproject = os.path.dirname(splittedghuburl.replace('/', '').replace('repos', '').replace('releases', ''))
+                                        splittedghuburl = urllib.request.urlsplit(ul).path
+                                        nameofproject = os.path.dirname(splittedghuburl).replace('/', '').replace('repos', '').replace('releases', '')
                                         #what a mouthful of string replacements, im sure there's a polished way but moving on
                                         if nameofproject == 'ImranR98Obtainium':
-                                                print(f'Downloading and installing from {jsonresponse['assets'][20]['browser_download_url']}')
-                                                urllib.request.urlretrieve(jsonresponse['assets'][20]['browser_download_url'], 'temp.apk')
-                                                os.system('adb install temp.apk')
-                                                os.remove('temp.apk')
+                                            print(f'Downloading and installing from {jsonresponse['assets'][20]['browser_download_url']}')
+                                            urllib.request.urlretrieve(jsonresponse['assets'][20]['browser_download_url'], 'temp.apk')
+                                            os.system('adb install temp.apk')
+                                            os.remove('temp.apk')
                                         elif nameofproject == 'bravebrave-browser':
                                             print(f'Downloading and installing from {jsonresponse['assets'][72]['browser_download_url']}')
                                             urllib.request.urlretrieve(jsonresponse['assets'][72]['browser_download_url'], 'temp.apk')
@@ -74,6 +74,41 @@ class AdbInstallApps:
                                         urllib.request.urlretrieve(jsonresponse['assets'][0]['browser_download_url'], 'temp.apk')
                                         os.system('adb install temp.apk')
                                         os.remove('temp.apk')
+                            elif txturlsf.startswith('https://gitlab.com/api'):
+                                with urllib3.request('GET', ul) as gul:
+                                    jsonresponse = gul.json()
+                                    splittedglaburl = urllib.request.urlsplit(ul)
+                                    nameofproject = os.path.dirname(splittedglaburl).replace('/api/v4/projects/', '')
+                                    if nameofproject == '6922885': #aurora gitlab id
+                                        print(f'Downloading and installing from {jsonresponse['assets']['links'][2]['direct_asset_url']}')
+                                        urllib.request.urlretrieve(jsonresponse['assets']['links'][2]['direct_asset_url'], 'temp.apk')
+                                        os.system('adb install temp.apk')
+                                        os.remove('temp.apk')
+
+                                    elif nameofproject == '65779408': #ironfox gitlab id
+                                        print(f'Downloading and installing from {jsonresponse['assets']['links'][2]['direct_asset_url']}')
+                                        urllib.request.urlretrieve(jsonresponse['assets']['links'][2]['direct_asset_url'], 'temp.apk')
+                                        os.system('adb install temp.apk')
+                                        os.remove('temp.apk')
+
+                                    else: #at this point I dont think it will be necessary
+                                        print(f'Downloading and installing from {jsonresponse['assets']['links'][0]['direct_asset_url']}')
+                                        urllib.request.urlretrieve(jsonresponse['assets']['links'][0]['direct_asset_url'], 'temp.apk')
+                                        os.system('adb install temp.apk')
+                                        os.remove('temp.apk')
+                            elif txturlsf.startswith('https://codeberg.org/api'):
+                                with urllib3.request('GET', ul) as gul:
+                                    jsonresponse = gul.json()
+                                     if len(jsonresponse['assets']) >= 1:
+                                        splittedglaburl = urllib.request.urlsplit(ul)
+                                        nameofproject = os.path.dirname(splittedglaburl).replace('/', '').replace('apiv1repos', '').replace('releases', '')
+                                        #I mean its just comaps, nothing else here
+                                      else:
+                                        print(f'Downloading and installing from {jsonresponse['assets'][0]['browser_download_url']}')
+                                        urllib.request.urlretrieve(jsonresponse['assets'][0]['browser_download_url'], 'temp.apk')
+                                        os.system('adb install temp.apk')
+                                        os.remove('temp.apk')
+                            #fdroid for GmapsWV makes it quite challenging here, ill continue later
                             else:
                                 with open(urls_txt_file) as txturlsf:
                                     for ul in txturlsf.readlines():
