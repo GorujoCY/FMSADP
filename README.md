@@ -19,6 +19,7 @@ MOST OF THE APPS INVOLVED ARE UNDER A FREE AND OPEN SOURCE LICENSE WHERE REDISTR
 ```
 If as a user do not trust the APKs obtained still, feel free to get them for yourself and put them under the `bundled_apks` folder and avoid using the executable that includes them or use the online installer(coming soon). The list of apps are normally:
 - All Fossify Apps
+- GrapheneOS PDF Viewer & Camera
 - FUTO Keyboard and GrayJay
 - Brave or Ironfox
 - Aurora Store (optional)
