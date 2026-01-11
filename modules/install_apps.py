@@ -109,6 +109,13 @@ class AdbInstallApps:
                                         os.system('adb install temp.apk')
                                         os.remove('temp.apk')
                             #fdroid for GmapsWV makes it quite challenging here, ill continue later
+                            elif txturlsf.startswith('fdroid.org/api'):
+                                 with urllib3.request('GET', ul) as gul:
+                                    jsonresponse = gul.json()
+                                    print(f'Downloading and installing from https://f-droid.org/repo/{jsonresponse['packageName']}_{jsonresponse['suggestedVersionCode']}.apk')
+                                    urllib.request.urlretrieve(f'https://f-droid.org/repo/{jsonresponse['packageName']}_{jsonresponse['suggestedVersionCode']}.apk', 'temp.apk')
+                                    os.system('adb install temp.apk')
+                                    os.remove('temp.apk')
                             else:
                                 with open(urls_txt_file) as txturlsf:
                                     for ul in txturlsf.readlines():

@@ -15,4 +15,4 @@ https://api.github.com/repos/GrapheneOS/Camera/releases/latest
 https://codeberg.org/api/v1/repos/comaps/comaps/releases/latest
 https://releases.grayjay.app/app-universal-release.apk
 https://keyboard.futo.org/keyboard.apk
-
+https://f-droid.org/api/v1/packages/us.spotco.maps
