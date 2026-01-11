@@ -1,0 +1,4 @@
+https://api.github.com/repos/ProtonMail/android-mail/releases/latest
+https://proton.me/download/DriveAndroid/ProtonDrive-Android.apk
+https://protonmail.com/download/CalendarAndroid/ProtonCalendar-Android.apk
+https://f-droid.org/api/v1/packages/proton.android.pass.fdroid
