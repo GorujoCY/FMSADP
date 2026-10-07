@@ -1,5 +1,5 @@
 # FMSADP
-FMSADP (Fossify(R) My Android Device Please) is a Python Software utilizing the Android(TM) Debug Bridge (ADB) for replacing system apps to a suite of apps. All rights to these respective apps and names belongs to them!
+FMSADP (Fossify(R) My Stock Android Device Please) is a Python Software utilizing the Android(TM) Debug Bridge (ADB) for replacing system apps to a suite of apps. All rights to these respective apps and names belongs to them!
 
 # In concerns of offline releases
 Codeberg limits file size to 100MB even on releases therefore those coming through codeberg you can either:
